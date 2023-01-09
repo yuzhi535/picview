@@ -11,7 +11,8 @@ import (
 // DefaultStructuredLogger logs a gin HTTP request in JSON format. Uses the
 // default logger from rs/zerolog.
 func DefaultStructuredLogger() gin.HandlerFunc {
-	outputFile, err := os.OpenFile("log.txt", os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
+	logfile := "log/picview.log"
+	outputFile, err := os.OpenFile(logfile, os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
 	if err != nil {
 		panic(err)
 	}
