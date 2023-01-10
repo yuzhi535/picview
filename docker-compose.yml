@@ -6,7 +6,7 @@ services:
     restart: always
     container_name: picview
     environment:
-      - port=8080
+      - PORT=8080
       - baseurl=127.0.0.1:8080/
       - GIN_MODE=debug
     ports:
