@@ -20,7 +20,7 @@ image folder:
 [docker url](https://hub.docker.com/r/yuzhibo535/picview) is here. 
 
 ## todo
-- [ ] cors
+- [x] cors
 - [x] support categery
 - [x] better logger
 - [x] docker support 
