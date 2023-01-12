@@ -13,9 +13,12 @@ url format: http://{url}:{port}/api/random/?category=scene&device=pc
     - mobile
 
 image folder:
-./images
-./images/scene/*.jpg
-./images/comic/*.jpg
+- root folder
+    - ./images
+        - ./images/scene/
+            - ./images/scene/*.jpg
+        - ./images/comic/
+            - ./images/comic/*.jpg
 
 [docker url](https://hub.docker.com/r/yuzhibo535/picview) is here. 
 
