@@ -21,14 +21,24 @@ func GetId(len int) (id int) {
 func Random(c *gin.Context) {
 	baseurl := os.Getenv("baseurl")
 
+	category := c.Query("category") // comic, scene
+	device := c.Query("device")     // mobile, pc
+
+	if category == "" {
+		category = "scene"
+	}
+	if device == "" {
+		device = "pc"
+	}
+
 	len := 0
 	fileList := []string{}
 
-	filepath.WalkDir("./images", func(path string, d os.DirEntry, err error) error {
+	filepath.WalkDir("./images/"+category, func(path string, d os.DirEntry, err error) error {
 		if err != nil {
 			return err
 		}
-		if !d.IsDir() && filepath.Ext(d.Name()) == ".jpg" {
+		if !d.IsDir() && filepath.Ext(d.Name()) == ".jpg" && filepath.Base(d.Name())[:2] == device {
 			len++
 			fileList = append(fileList, d.Name())
 		}
@@ -38,5 +48,5 @@ func Random(c *gin.Context) {
 	id := GetId(len)
 	imgname := fileList[id]
 
-	c.Redirect(http.StatusMovedPermanently, "http://"+baseurl+"api/images/"+imgname)
+	c.Redirect(http.StatusMovedPermanently, "http://"+baseurl+"api/images/"+category+"/"+imgname)
 }
