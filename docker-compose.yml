@@ -2,18 +2,18 @@ version: '3.2'
     
 services:
   picview:
-    image: picview:0.1
+    image: picview:latest
     restart: always
     container_name: picview
     environment:
       - PORT=8080
-      - baseurl=127.0.0.1:8080/
+      - baseurl=http://localhost:8080
       - GIN_MODE=release
     ports:
-      - 8080:8080
+      - 65322:8080
 
     expose:
-      - 8080
+      - 65322
     
     volumes:
       - /home/zyx/data/picview/:/workspace/log/

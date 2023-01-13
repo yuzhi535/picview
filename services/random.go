@@ -38,7 +38,7 @@ func Random(c *gin.Context) {
 		if err != nil {
 			return err
 		}
-		if !d.IsDir() && filepath.Ext(d.Name()) == ".jpg" && filepath.Base(d.Name())[:2] == device {
+		if !d.IsDir() && filepath.Ext(d.Name()) == ".jpg" && filepath.Base(d.Name())[:1] == device[:1] {
 			len++
 			fileList = append(fileList, d.Name())
 		}
@@ -48,5 +48,5 @@ func Random(c *gin.Context) {
 	id := GetId(len)
 	imgname := fileList[id]
 
-	c.Redirect(http.StatusMovedPermanently, "http://"+baseurl+"api/images/"+category+"/"+imgname)
+	c.Redirect(http.StatusMovedPermanently, baseurl+"api/images/"+category+"/"+imgname)
 }

@@ -1,4 +1,4 @@
 images/*
 tmp/
 log/
-app.env
+*.env
